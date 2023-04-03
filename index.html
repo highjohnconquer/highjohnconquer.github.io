@@ -1,0 +1,83 @@
+// Initialize the Babylon.js engine, scene, and camera
+const canvas = document.getElementById("renderCanvas");
+const engine = new BABYLON.Engine(canvas, true);
+const scene = new BABYLON.Scene(engine);
+const camera = new BABYLON.ArcRotateCamera("camera", 0, 0, 10, new BABYLON.Vector3.Zero(), scene);
+camera.attachControl(canvas, true);
+
+// Render the scene
+engine.runRenderLoop(() => {
+    scene.render();
+});
+
+// Resize the canvas if the window size changes
+window.addEventListener("resize", () => {
+    engine.resize();
+});
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My 3D Project</title>
+    <style>
+        /* Make the canvas fill the whole screen */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the canvas */
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a canvas element where the 3D graphics will be displayed -->
+    <canvas id="renderCanvas"></canvas>
+
+    <!-- Include the Babylon.js library from a Content Delivery Network (CDN) -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    
+    <!-- Include your JavaScript file (e.g., app.js) -->
+    <script src="app.js"></script>
+</body>
+</html>
+<!-- Scene 1 -->
+<div id="scene1">
+  <!-- Arrow button to go to the next scene -->
+  <button id="arrow1">Next Scene</button>
+  <!-- Clue buttons for Scene 1 -->
+  <button id="clue1">Clue 1</button>
+  <button id="clue2">Clue 2</button>
+  <button id="clue3">Clue 3</button>
+  <button id="clue4">Clue 4</button>
+</div>
+
+<!-- Scene 2 -->
+<div id="scene2" style="display: none;">
+  <!-- Arrow button to go to the next scene -->
+  <button id="arrow2">Next Scene</button>
+  <!-- Clue buttons for Scene 2 -->
+  <button id="clue5">Clue 1</button>
+  <button id="clue6">Clue 2</button>
+  <button id="clue7">Clue 3</button>
+  <button id="clue8">Clue 4</button>
+</div>
+
+<!-- ... Add more scenes and buttons as needed -->
+
+<!-- Scene 7 -->
+<div id="scene7" style="display: none;">
+  <!-- Clue buttons for Scene 7 -->
+  <button id="clue25">Clue 1</button>
+  <button id="clue26">Clue 2</button>
+  <button id="clue27">Clue 3</button>
+  <button id="clue28">Clue 4</button>
+</div>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,0 +1,183 @@
+INCLUDE game_variables.ink
+INCLUDE scene_descriptions.ink
+
+-> start
+
+== start ==
+VAR player_name = "Player"
+VAR player_gender = "they"
+VAR player_pronoun = "them"
+VAR shirt_color = "blue"
+VAR integral_clues_found = 0
+
+Hello there! Welcome to our interactive infomercial.
+What's your name? 
++ [Enter your name] -> player_name_input
++ [Skip] -> gender_input
+
+== player_name_input ==
+~ TEMP input = ""
+Enter your name:
++ [Type name here] -> input
+~ player_name = input
+-> gender_input
+
+== gender_input ==
+What are your preferred gender pronouns?
++ [He/Him] -> {player_gender="he", player_pronoun="him"} gender_set
++ [She/Her] -> {player_gender="she", player_pronoun="her"} gender_set
++ [They/Them] -> {player_gender="they", player_pronoun="them"} gender_set
+
+== gender_set ==
+What color is your shirt?
++ [Red] -> {shirt_color="red"} shirt_set
++ [Blue] -> {shirt_color="blue"} shirt_set
++ [Green] -> {shirt_color="green"} shirt_set
++ [Yellow] -> {shirt_color="yellow"} shirt_set
+
+== shirt_set ==
+{player_name}, dressed in a {shirt_color} shirt, embarks on this thrilling adventure.
+-> scene_1
+
+== scene_1 ==
+{scene_1_description}
+
+* [Collect clue 1] -> {found_clue_1_1()} scene_1
+* [Collect clue 2] -> {found_clue_1_2()} scene_1
+* [Collect clue 3] -> {found_clue_1_3()} scene_1
+* [Collect clue 4] -> {found_clue_1_4()} scene_1
+* [Collect clue 5] -> {found_clue_1_5()} scene_1
+* [Move to the next scene] -> scene_2
+
+== scene_2 ==
+{scene_2_description}
+
+* [Collect clue 1] -> {found_clue_2_1()} scene_2
+* [Collect clue 2] -> {found_clue_2_2()} scene_2
+* [Collect clue 3] -> {found_clue_2_3()} scene_2
+* [Collect clue 4] -> {found_clue_2_4()} scene_2
+* [Collect clue 5] -> {found_clue_2_5()} scene_2
+* [Move to the next scene] -> scene_3
+
+== scene_3 ==
+{scene_3_description}
+
+* [Collect clue 1] -> {found_clue_3_1()} scene_3
+* [Collect clue 2] -> {found_clue_3_2()} scene_3
+* [Collect clue 3] -> {found_clue_3_3()} scene_3
+* [Collect clue 4] -> {found_clue_3_4()} scene_3
+* [Collect clue 5] -> {found_clue_3_5()} scene_3
+* [Move to the next scene] -> scene_4
+
+== scene_4 ==
+{scene_4_description}
+
+* [Collect clue 1] -> {found_clue_4_1()} scene_4
+* [Collect clue 2] -> {found_clue_4_2()} scene_4
+* [Collect clue 3] -> {found_clue_4_3()} scene_4
+
+[Collect clue 4] -> {found_clue_4_4()} scene_4
+[Collect clue 5] -> {found_clue_4_5()} scene_4
+[Move to the next scene] -> scene_5
+== scene_5 ==
+{scene_5_description}
+
+[Collect clue 1] -> {found_clue_5_1()} scene_5
+[Collect clue 2] -> {found_clue_5_2()} scene_5
+[Collect clue 3] -> {found_clue_5_3()} scene_5
+[Collect clue 4] -> {found_clue_5_4()} scene_5
+[Collect clue 5] -> {found_clue_5_5()} scene_5
+[Move to the next scene] -> scene_6
+== scene_6 ==
+{scene_6_description}
+
+[Collect clue 1] -> {found_clue_6_1()} scene_6
+[Collect clue 2] -> {found_clue_6_2()} scene_6
+[Collect clue 3] -> {found_clue_6_3()} scene_6
+[Collect clue 4] -> {found_clue_6_4()} scene_6
+[Collect clue 5] -> {found_clue_6_5()} scene_6
+[Move to the next scene] -> scene_7
+== scene_7 ==
+{scene_7_description}
+
+[Collect clue 1] -> {found_clue_7_1()} scene_7
+[Collect clue 2] -> {found_clue_7_2()} scene_7
+[Collect clue 3] -> {found_clue_7_3()} scene_7
+[Collect clue 4] -> {found_clue_7_4()} scene_7
+[Collect clue 5] -> {found_clue_7_5()} scene_7
+[Move to the next scene] -> check_integral_clues
+== check_integral_clues ==
+~ if integral_clues_found >= 7:
+-> ending_scene
+~ else:
+-> missing_integral_clues
+
+== missing_integral_clues ==
+You haven't found all the integral clues yet. Keep exploring!
+
+[Go back to Scene 1] -> scene_1
+[Go back to Scene 2] -> scene_2
+[Go back to Scene 3] -> scene_3
+[Go back to Scene 4] -> scene_4
+[Go back to Scene 5] -> scene_5
+[Go back to Scene 6] -> scene_6
+[Go back to Scene 7] -> scene_7
+== ending_scene ==
+[6:59 PM]
+The Bitcoin miners have been run out of town! With all the integral clues you've collected, their operation has been shut down, and the townspeople can now breathe a sigh of relief. You've saved the day!
+
+Congratulations, {player_name}, and thank you for playing!
+-> END]
+[7:00 PM]
+--------------
+Scene 1 Clues:
+
+Integral Clue: A newspaper article detailing the recent approval of the mining facility construction in Texas.
+A local Texas history book with a chapter on the oil industry's impact on the environment.
+A flyer for a public town hall meeting discussing the potential implications of the mining facility.
+A report on the growth of cryptocurrency usage in Texas.
+A guide to renewable energy options available in the area.
+Scene 2 Clues:
+
+Integral Clue: Riot Blockchain's internal memo discussing their expansion plans in Texas.
+A chart comparing the electricity consumption of various cryptocurrency mining operations.
+An infographic highlighting the benefits of cryptocurrency mining.
+A news article about Riot Blockchain's previous environmental violations.
+A blog post by a former Riot Blockchain employee detailing the company's aggressive growth strategy.
+Scene 3 Clues:
+
+Integral Clue: A water quality report showing increasing levels of contamination in the Richardson Chambers Reservoir.
+A pamphlet on the dangers of water pollution from industrial runoff.
+A video of a local resident expressing concerns about the reservoir's future.
+A research paper on the impact of mining operations on water sources.
+A map showing the locations of other nearby reservoirs.
+Scene 4 Clues:
+
+Integral Clue: A community petition against the mining facility's construction, signed by a majority of Corsicana residents.
+A local news article profiling several small businesses negatively affected by the mining facility.
+A real estate flyer showing a decline in property values near the facility.
+A historical photo of Corsicana before the mining facility was built.
+A letter from a local politician advocating for stricter regulations on mining operations.
+Scene 5 Clues:
+
+Integral Clue: A legal document outlining a class-action lawsuit filed by Arlington and Fort Worth citizens against Riot Blockchain.
+A social media post by an Arlington resident, complaining about the change in tap water taste.
+A news article discussing the potential health risks associated with contaminated water.
+A campaign poster for a local politician promising to address the mining facility's impact.
+A bottled water advertisement capitalizing on the public's concerns.
+Scene 6 Clues:
+
+Integral Clue: A list of environmental organizations supporting the protests against the mining facility.
+A protestor's sign displaying facts about the facility's energy consumption and pollution.
+A pamphlet outlining alternative, eco-friendly cryptocurrency mining methods.
+A video interview with a protestor explaining their reasons for opposing the facility.
+A letter from a local environmentalist proposing a more sustainable approach to mining operations.
+Scene 7 Clues:
+
+Integral Clue: A secret recording of a high-ranking Riot Blockchain executive admitting to underestimating the facility's environmental impact.
+A blueprint of the mining facility's planned expansion.
+An article discussing the long-term consequences of large-scale cryptocurrency mining on the environment.
+A list of proposed regulations aimed at mitigating the negative effects of mining operations.
+A petition calling for a moratorium on new mining facility constructions until better regulations are in place.
+
+wait for the next page. simply say yes if you understand.
